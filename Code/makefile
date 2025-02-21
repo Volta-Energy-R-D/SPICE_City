@@ -23,8 +23,8 @@ CFLAGS = -I$(include)
 proj_SC : $(objects)
 	gcc -o proj_SC $(objects) -lphidget22
 
-# compile main_code.c to produce main_code.o, if needed
-main_code.o : main_code.c SC_infrastructure.h SC_railway.h SC_lights.h SC_powerstations.h
+# compile main.c to produce main.o, if needed
+main.o : main.c SC_infrastructure.h SC_railway.h SC_lights.h SC_powerstations.h
 
 # compile various source files for SPICE City
 SC_infrastructure.o: SC_infrastructure.c SC_infrastructure.h
