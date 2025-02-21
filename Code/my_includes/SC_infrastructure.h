@@ -29,11 +29,11 @@
 *
 *
 *******************************************/
-static void CCONV onEMERGENCY_StateChange(PhidgetDigitalInputHandle ch, void * ctx, int state);
+void CCONV onEMERGENCY_StateChange(PhidgetDigitalInputHandle ch, void * ctx, int state);
 //
-static void CCONV onEMERGENCY_Attach(PhidgetHandle ch, void * ctx);
+void CCONV onEMERGENCY_Attach(PhidgetHandle ch, void * ctx);
 //
-static void CCONV onEMERGENCY_Detach(PhidgetHandle ch, void * ctx);
+void CCONV onEMERGENCY_Detach(PhidgetHandle ch, void * ctx);
 //
 
 

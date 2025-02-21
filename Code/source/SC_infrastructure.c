@@ -24,7 +24,7 @@
 *
 *
 *******************************************/
-static void CCONV onEMERGENCY_StateChange(PhidgetDigitalInputHandle ch, void * ctx, int state) 
+void CCONV onEMERGENCY_StateChange(PhidgetDigitalInputHandle ch, void * ctx, int state) 
 {
 	// output any status change
     printf("EMERGENCY Button State: %d\n", state);
@@ -52,13 +52,13 @@ static void CCONV onEMERGENCY_StateChange(PhidgetDigitalInputHandle ch, void * c
 
 }
 //
-static void CCONV onEMERGENCY_Attach(PhidgetHandle ch, void * ctx)
+void CCONV onEMERGENCY_Attach(PhidgetHandle ch, void * ctx)
 {
 	printf("EMERGENCY Button Attached!\n");
     return;
 }
 //
-static void CCONV onEMERGENCY_Detach(PhidgetHandle ch, void * ctx) 
+void CCONV onEMERGENCY_Detach(PhidgetHandle ch, void * ctx) 
 {
 	printf("EMERGENCY Button Detached!\n");
     return;
