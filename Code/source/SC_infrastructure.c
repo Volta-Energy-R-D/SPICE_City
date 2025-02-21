@@ -15,8 +15,8 @@
 *
 **********************************************/
 #include "SC_infrastructure.h"
-
-
+#include<stdio.h>
+#include<phidget22.h>
 
 /******************************************
 *
@@ -29,7 +29,7 @@ static void CCONV onEMERGENCY_StateChange(PhidgetDigitalInputHandle ch, void * c
 	// output any status change
     printf("EMERGENCY Button State: %d\n", state);
 
-    if (state == 1)
+   /* if (state == 1)
     {
         // disconnect High-Demand Intermittent Load, Generator A
 
@@ -47,15 +47,19 @@ static void CCONV onEMERGENCY_StateChange(PhidgetDigitalInputHandle ch, void * c
 
         // keep lights on for safety
     }
+    */
+    return;
 
 }
 //
 static void CCONV onEMERGENCY_Attach(PhidgetHandle ch, void * ctx)
 {
 	printf("EMERGENCY Button Attached!\n");
+    return;
 }
 //
 static void CCONV onEMERGENCY_Detach(PhidgetHandle ch, void * ctx) 
 {
 	printf("EMERGENCY Button Detached!\n");
+    return;
 }
