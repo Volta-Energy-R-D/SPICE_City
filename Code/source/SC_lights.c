@@ -82,16 +82,16 @@ local defines
 #define Lights_Res_B_1_PH_LED_chan          19
 
 // industrial facility
-#define Lights_Industry_0                   657281
-#define Lights_Industry_0_LED_chan          20
-#define Lights_Industry_1                   657281
-#define Lights_Industry_1_LED_chan          21
+#define Lights_Industry_0_PH                657281
+#define Lights_Industry_0_PH_LED_chan       20
+#define Lights_Industry_1_PH                657281
+#define Lights_Industry_1_PH_LED_chan       21
 
 // commercial medical area
-#define Lights_ComMed_0                     657281
-#define Lights_ComMed_0_LED_chan            22
-#define Lights_ComMed_1                     657281
-#define Lights_ComMed_1_LED_chan            23
+#define Lights_ComMed_0_PH                  657281
+#define Lights_ComMed_0_PH_LED_chan         22
+#define Lights_ComMed_1_PH                  657281
+#define Lights_ComMed_1_PH_LED_chan         23
 
 
 
@@ -361,55 +361,73 @@ void CreateSCLights (void)
 	PhidgetDigitalOutput_create(&Lights_ComMed_0);
 	PhidgetDigitalOutput_create(&Lights_ComMed_1);
 
-	//Set addressing parameters to specify which channel to open (if any)
-	Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_GS_0, Lights_GS_0_PH);
-    Phidget_setChannel((PhidgetHandle)Lights_GS_0, 0);
+	// Set addressing parameters to specify which channel to open (if any)
+	
+    //      generating station
+    Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_GS_0, Lights_GS_0_PH);
+    Phidget_setChannel((PhidgetHandle)Lights_GS_0, Lights_GS_0_PH_LED_chan);
 	Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_GS_1, Lights_GS_1_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_GS_1, 1);
+	Phidget_setChannel((PhidgetHandle)Lights_GS_1, Lights_GS_1_PH_LED_chan);
+
+    //      subway
 	Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_Subway_0, Lights_Subway_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_Subway_0, 2);
+	Phidget_setChannel((PhidgetHandle)Lights_Subway_0, Lights_Subway_0_PH_LED_chan);
 	Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_Subway_1, Lights_Subway_1_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_Subway_1, 3);
+	Phidget_setChannel((PhidgetHandle)Lights_Subway_1, Lights_Subway_1_PH_LED_chan);
+
+    //      gridWISE microgrids 1 & 2
 	Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_gW_1_0, Lights_gW_1_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_gW_1_0, 4);
+	Phidget_setChannel((PhidgetHandle)Lights_gW_1_0, Lights_gW_1_0_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_gW_1_1, Lights_gW_1_1_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_gW_1_1, 5);
+	Phidget_setChannel((PhidgetHandle)Lights_gW_1_1, Lights_gW_1_1_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_gW_2_0, Lights_gW_2_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_gW_2_0, 6);
+	Phidget_setChannel((PhidgetHandle)Lights_gW_2_0, Lights_gW_2_0_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_gW_2_1, Lights_gW_2_1_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_gW_2_1, 7);
+	Phidget_setChannel((PhidgetHandle)Lights_gW_2_1, Lights_gW_2_1_PH_LED_chan);
+
+    //      downtown arrondissements A & B
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_DT_A_0, Lights_DT_A_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_DT_A_0, 8);
+	Phidget_setChannel((PhidgetHandle)Lights_DT_A_0, Lights_DT_A_0_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_DT_A_1, Lights_DT_A_1_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_DT_A_1, 9);
+	Phidget_setChannel((PhidgetHandle)Lights_DT_A_1, Lights_DT_A_1_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_DT_B_0, Lights_DT_B_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_DT_B_0, 10);
+	Phidget_setChannel((PhidgetHandle)Lights_DT_B_0, Lights_DT_B_0_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_DT_B_1, Lights_DT_B_1_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_DT_B_1, 11);
+	Phidget_setChannel((PhidgetHandle)Lights_DT_B_1, Lights_DT_B_1_PH_LED_chan);
+
+    //      SOCRATES station A
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_SOCRATES_A_0, Lights_SOCRATES_A_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_SOCRATES_A_0, 12);
+	Phidget_setChannel((PhidgetHandle)Lights_SOCRATES_A_0, Lights_SOCRATES_A_0_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_SOCRATES_A_1, Lights_SOCRATES_A_1_PH);
-    Phidget_setChannel((PhidgetHandle)Lights_SOCRATES_A_1, 13);
+    Phidget_setChannel((PhidgetHandle)Lights_SOCRATES_A_1, Lights_SOCRATES_A_1_PH_LED_chan);
+
+    //      Union Station
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_Union_0, Lights_Union_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_Union_0, 14);
+	Phidget_setChannel((PhidgetHandle)Lights_Union_0, Lights_Union_0_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_Union_1, Lights_Union_1_PH);
-    Phidget_setChannel((PhidgetHandle)Lights_Union_1, 15);
+    Phidget_setChannel((PhidgetHandle)Lights_Union_1, Lights_Union_1_PH_LED_chan);
+
+    //      residential areas A & B
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_Res_A_0, Lights_Res_A_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_Res_A_0, 16);
+	Phidget_setChannel((PhidgetHandle)Lights_Res_A_0, Lights_Res_A_0_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_Res_A_1, Lights_Res_A_1_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_Res_A_1, 17);
+	Phidget_setChannel((PhidgetHandle)Lights_Res_A_1, Lights_Res_A_1_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_Res_B_0, Lights_Res_B_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_Res_B_0, 18);
+	Phidget_setChannel((PhidgetHandle)Lights_Res_B_0, Lights_Res_B_0_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_Res_B_1, Lights_Res_B_1_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_Res_B_1, 19);
+	Phidget_setChannel((PhidgetHandle)Lights_Res_B_1, Lights_Res_B_1_PH_LED_chan);
+
+    //      industrial facility
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_Industry_0, Lights_Industry_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_Industry_0, 20);
+	Phidget_setChannel((PhidgetHandle)Lights_Industry_0, Lights_Industry_0_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_Industry_1, Lights_Industry_1_PH);
-    Phidget_setChannel((PhidgetHandle)Lights_Industry_1, 21);
+    Phidget_setChannel((PhidgetHandle)Lights_Industry_1, Lights_Industry_1_PH_LED_chan);
+
+    //      commercial medical area
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_ComMed_0, Lights_ComMed_0_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_ComMed_0, 22);
+	Phidget_setChannel((PhidgetHandle)Lights_ComMed_0, Lights_ComMed_0_PH_LED_chan);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Lights_ComMed_1, Lights_ComMed_1_PH);
-	Phidget_setChannel((PhidgetHandle)Lights_ComMed_1, 23);
+	Phidget_setChannel((PhidgetHandle)Lights_ComMed_1, Lights_ComMed_1_PH_LED_chan);
 
 	//Assign any event handlers you need before calling open so that no events are missed.
 	Phidget_setOnAttachHandler((PhidgetHandle)Lights_GS_0, onLights_GS_0_Attach, NULL);
