@@ -78,6 +78,13 @@
 *******************************************/
 
 void CreateSCLights (void);
+void TurnONLight (const unsigned short int location);
+void TurnOFFLight (const unsigned short int location);
+void ShutdownSCLights (void);
+
+
+
+
 
 
 #endif // SC_LIGHTS_HEADER_H (N.B.: last line of header file!)
