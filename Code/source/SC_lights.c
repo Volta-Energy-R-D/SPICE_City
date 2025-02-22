@@ -100,28 +100,48 @@ local defines
 local variables
 
 ******************************************/
+
+// Declare your Phidget channels and other variables
+
+//  generating station
 static PhidgetDigitalOutputHandle Lights_GS_0;
 static PhidgetDigitalOutputHandle Lights_GS_1;
+
+//  subway
 static PhidgetDigitalOutputHandle Lights_Subway_0;
 static PhidgetDigitalOutputHandle Lights_Subway_1;
+
+//  gridWISE microgrids
 static PhidgetDigitalOutputHandle Lights_gW_1_0;
 static PhidgetDigitalOutputHandle Lights_gW_1_1;
 static PhidgetDigitalOutputHandle Lights_gW_2_0;
 static PhidgetDigitalOutputHandle Lights_gW_2_1;
+
+//  downtown arrondissments A & B
 static PhidgetDigitalOutputHandle Lights_DT_A_0;
 static PhidgetDigitalOutputHandle Lights_DT_A_1;
 static PhidgetDigitalOutputHandle Lights_DT_B_0;
 static PhidgetDigitalOutputHandle Lights_DT_B_1;
+
+//  SOCRATES station A
 static PhidgetDigitalOutputHandle Lights_SOCRATES_A_0;
 static PhidgetDigitalOutputHandle Lights_SOCRATES_A_1;
+
+//  Union Station
 static PhidgetDigitalOutputHandle Lights_Union_0;
 static PhidgetDigitalOutputHandle Lights_Union_1;
+
+//  residential areas A & B
 static PhidgetDigitalOutputHandle Lights_Res_A_0;
 static PhidgetDigitalOutputHandle Lights_Res_A_1;
 static PhidgetDigitalOutputHandle Lights_Res_B_0;
 static PhidgetDigitalOutputHandle Lights_Res_B_1;
+
+//  industrial facility 
 static PhidgetDigitalOutputHandle Lights_Industry_0;
 static PhidgetDigitalOutputHandle Lights_Industry_1;
+
+//  commercial-medical area
 static PhidgetDigitalOutputHandle Lights_ComMed_0;
 static PhidgetDigitalOutputHandle Lights_ComMed_1;
 
@@ -333,7 +353,6 @@ external or "interface" functions
 
 void CreateSCLights (void) 
 {
-	//Declare your Phidget channels and other variables
 
 	//Create your Phidget channels
 	PhidgetDigitalOutput_create(&Lights_GS_0);
@@ -508,35 +527,219 @@ void CreateSCLights (void)
     return;
 }
 
-	//Do stuff with your Phidgets here or in your event handlers.
-	PhidgetDigitalOutput_setDutyCycle(Lights_GS_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_GS_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_Subway_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_Subway_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_gW_1_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_gW_1_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_gW_2_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_gW_2_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_DT_A_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_DT_A_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_DT_B_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_DT_B_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_SOCRATES_A_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_SOCRATES_A_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_Union_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_Union_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_Res_A_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_Res_A_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_Res_B_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_Res_B_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_Industry_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_Industry_1, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_ComMed_0, 1);
-	PhidgetDigitalOutput_setDutyCycle(Lights_ComMed_1, 1);
 
-	//Wait until Enter has been pressed before exiting
-	getchar();
+void TurnONLight(const unsigned short int location)
+{
+    switch (location) {
+        case LIGHTS_GS_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_GS_0, 1);
+        break;
+        case LIGHTS_GS_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_GS_1, 1);
+        break; 
+        case LIGHTS_SUBWAY_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Subway_0, 1);
+        break;
+        case LIGHTS_SUBWAY_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Subway_1, 1);
+        break;
+        case LIGHTS_GW_1_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_1_0, 1);
+        break;
+        case LIGHTS_GW_1_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_1_1, 1);
+        break;
+        case LIGHTS_GW_2_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_2_0, 1);
+        break;
+        case LIGHTS_GW_2_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_2_1, 1);
+        break;
+        case LIGHTS_DT_A_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_A_0, 1);
+        break;
+        case LIGHTS_DT_A_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_A_1, 1);
+        break;
+        case LIGHTS_DT_B_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_B_0, 1);
+        break;
+        case LIGHTS_DT_B_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_B_1, 1);
+        break;
+        case LIGHTS_SOCRATES_A_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_SOCRATES_A_0, 1);
+        break;
+        case LIGHTS_SOCRATES_A_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_SOCRATES_A_1, 1);
+        break;
+        case LIGHTS_UNION_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Union_0, 1);
+        break;
+        case LIGHTS_UNION_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Union_1, 1);
+        break;
+        case LIGHTS_RES_A_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_A_0, 1);
+        break;
+        case LIGHTS_RES_A_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_A_1, 1);
+        break;
+        case LIGHTS_RES_B_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_B_0, 1);
+        break;
+        case LIGHTS_RES_B_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_B_1, 1);
+        break;
+        case LIGHTS_INDUSTRY_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Industry_0, 1);
+        break;
+        case LIGHTS_INDUSTRY_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Industry_1, 1);
+        break;
+        case LIGHTS_COMMED_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_ComMed_0, 1);
+        break;
+        case LIGHTS_COMMED_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_ComMed_1, 1);
+        break;
+        default: // turn on ALL lights
+            PhidgetDigitalOutput_setDutyCycle(Lights_GS_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_GS_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Subway_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Subway_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_1_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_1_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_2_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_2_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_A_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_A_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_B_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_B_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_SOCRATES_A_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_SOCRATES_A_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Union_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Union_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_A_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_A_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_B_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_B_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Industry_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Industry_1, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_ComMed_0, 1);
+            PhidgetDigitalOutput_setDutyCycle(Lights_ComMed_1, 1);
+        break;
+    }
+    return;
+}
 
+void TurnOFFLight (const unsigned short int location)
+{
+    switch (location) {
+        case LIGHTS_GS_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_GS_0, 0);
+        break;
+        case LIGHTS_GS_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_GS_1, 0);
+        break; 
+        case LIGHTS_SUBWAY_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Subway_0, 0);
+        break;
+        case LIGHTS_SUBWAY_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Subway_1, 0);
+        break;
+        case LIGHTS_GW_1_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_1_0, 0);
+        break;
+        case LIGHTS_GW_1_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_1_1, 0);
+        break;
+        case LIGHTS_GW_2_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_2_0, 0);
+        break;
+        case LIGHTS_GW_2_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_2_1, 0);
+        break;
+        case LIGHTS_DT_A_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_A_0, 0);
+        break;
+        case LIGHTS_DT_A_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_A_1, 0);
+        break;
+        case LIGHTS_DT_B_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_B_0, 0);
+        break;
+        case LIGHTS_DT_B_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_B_1, 0);
+        break;
+        case LIGHTS_SOCRATES_A_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_SOCRATES_A_0, 0);
+        break;
+        case LIGHTS_SOCRATES_A_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_SOCRATES_A_1, 0);
+        break;
+        case LIGHTS_UNION_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Union_0, 0);
+        break;
+        case LIGHTS_UNION_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Union_1, 0);
+        break;
+        case LIGHTS_RES_A_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_A_0, 0);
+        break;
+        case LIGHTS_RES_A_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_A_1, 0);
+        break;
+        case LIGHTS_RES_B_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_B_0, 0);
+        break;
+        case LIGHTS_RES_B_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_B_1, 0);
+        break;
+        case LIGHTS_INDUSTRY_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Industry_0, 0);
+        break;
+        case LIGHTS_INDUSTRY_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_Industry_1, 0);
+        break;
+        case LIGHTS_COMMED_0:
+            PhidgetDigitalOutput_setDutyCycle(Lights_ComMed_0, 0);
+        break;
+        case LIGHTS_COMMED_1:
+            PhidgetDigitalOutput_setDutyCycle(Lights_ComMed_1, 0);
+        break;
+        default: // turn on ALL lights
+            PhidgetDigitalOutput_setDutyCycle(Lights_GS_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_GS_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Subway_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Subway_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_1_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_1_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_2_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_gW_2_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_A_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_A_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_B_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_DT_B_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_SOCRATES_A_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_SOCRATES_A_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Union_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Union_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_A_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_A_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_B_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Res_B_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Industry_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_Industry_1, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_ComMed_0, 0);
+            PhidgetDigitalOutput_setDutyCycle(Lights_ComMed_1, 0);
+        break;
+    }
+    return;
+}
+
+void ShutdownSCLights (void) 
+{
 	//Close your Phidgets once the program is done.
 	Phidget_close((PhidgetHandle)Lights_GS_0);
 	Phidget_close((PhidgetHandle)Lights_GS_1);
@@ -587,5 +790,6 @@ void CreateSCLights (void)
 	PhidgetDigitalOutput_delete(&Lights_Industry_1);
 	PhidgetDigitalOutput_delete(&Lights_ComMed_0);
 	PhidgetDigitalOutput_delete(&Lights_ComMed_1);
+    return;
 }
 
