@@ -23,30 +23,76 @@
 local defines
 
 ******************************************/
-#define ATTACH_WAIT_TIME        500
+#define ATTACH_WAIT_TIME                    500
 
-#define Lights_GS_0_PH          657281
-#define Lights_GS_1_PH          657281
-#define Lights_Subway_0_PH      657281
-#define Lights_Subway_1_PH      657281
-#define Lights_gW_1_0_PH        657281
-#define Lights_gW_1_1_PH        657281
-#define Lights_gW_2_0_PH        657281
-#define Lights_gW_2_1_PH        657281
-#define Lights_DT_A_0_PH        657281
-#define Lights_DT_A_1_PH        657281
-#define Lights_SOCRATES_A_0_PH  657281
-#define Lights_SOCRATES_A_1_PH  657281
-#define Lights_Union_0_PH       657281
-#define Lights_Union_1_PH       657281
-#define Lights_Res_A_0_PH       657281
-#define Lights_Res_A_1_PH       657281
-#define Lights_Res_B_0_PH       657281
-#define Lights_Res_B_1_PH       657281
-#define Lights_Industry_0       657281
-#define Lights_Industry_1       657281
-#define Lights_ComMed_0         657281
-#define Lights_ComMed_1         657281
+// generating station 
+#define Lights_GS_0_PH                      657281  // Phidget Hub device serial number
+#define Lights_GS_0_PH_LED_chan             0       // Phidget Hub LED channel
+#define Lights_GS_1_PH                      657281
+#define Lights_GS_1_PH_LED_chan             1
+
+// subway
+#define Lights_Subway_0_PH                  657281
+#define Lights_Subway_0_PH_LED_chan         2
+#define Lights_Subway_1_PH                  657281
+#define Lights_Subway_1_PH_LED_chan         3
+
+// gridWISE microgrids 1 & 2
+#define Lights_gW_1_0_PH                    657281
+#define Lights_gW_1_0_PH_LED_chan           4
+#define Lights_gW_1_1_PH                    657281
+#define Lights_gW_1_1_PH_LED_chan           5
+#define Lights_gW_2_0_PH                    657281
+#define Lights_gW_2_0_PH_LED_chan           6
+#define Lights_gW_2_1_PH                    657281
+#define Lights_gW_2_1_PH_LED_chan           7
+
+// downtown arrondissment A
+#define Lights_DT_A_0_PH                    657281
+#define Lights_DT_A_0_PH_LED_chan           8
+#define Lights_DT_A_1_PH                    657281
+#define Lights_DT_A_1_PH_LED_chan           9
+
+// downtown arrondissment B
+#define Lights_DT_B_0_PH                    657281
+#define Lights_DT_B_0_PH_LED_chan           10
+#define Lights_DT_B_1_PH                    657281
+#define Lights_DT_B_1_PH_LED_chan           11
+
+// SOCRATES Station A
+#define Lights_SOCRATES_A_0_PH              657281
+#define Lights_SOCRATES_A_0_PH_LED_chan     12
+#define Lights_SOCRATES_A_1_PH              657281
+#define Lights_SOCRATES_A_1_PH_LED_chan     13
+
+// Union Station
+#define Lights_Union_0_PH                   657281
+#define Lights_Union_0_PH_LED_chan          14
+#define Lights_Union_1_PH                   657281
+#define Lights_Union_1_PH_LED_chan          15
+
+// residential areas A & B
+#define Lights_Res_A_0_PH                   657281
+#define Lights_Res_A_0_PH_LED_chan          16
+#define Lights_Res_A_1_PH                   657281
+#define Lights_Res_A_1_PH_LED_chan          17
+#define Lights_Res_B_0_PH                   657281
+#define Lights_Res_B_0_PH_LED_chan          18
+#define Lights_Res_B_1_PH                   657281
+#define Lights_Res_B_1_PH_LED_chan          19
+
+// industrial facility
+#define Lights_Industry_0                   657281
+#define Lights_Industry_0_LED_chan          20
+#define Lights_Industry_1                   657281
+#define Lights_Industry_1_LED_chan          21
+
+// commercial medical area
+#define Lights_ComMed_0                     657281
+#define Lights_ComMed_0_LED_chan            22
+#define Lights_ComMed_1                     657281
+#define Lights_ComMed_1_LED_chan            23
+
 
 
 /*****************************************
