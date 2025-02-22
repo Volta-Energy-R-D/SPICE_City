@@ -19,22 +19,32 @@
 
 #include<phidget22.h>
 
+/******************************************
+*
+* DEFINITIONS
+*
+*
+*******************************************/
+// EMERGENCY BUTTON Phidget addressing
 #define EMERGENCY_PH            767895
 #define EMERGENCY_PH_port       0
+
+// AMBIENT Lighting
 
 
 /******************************************
 *
-* EMERGENCY button code
+* FUNCTIONS
 *
 *
 *******************************************/
+
+
+
+// EMERGENCY BUTTON functions
 void CCONV onEMERGENCY_StateChange(PhidgetDigitalInputHandle ch, void * ctx, int state);
-//
 void CCONV onEMERGENCY_Attach(PhidgetHandle ch, void * ctx);
-//
 void CCONV onEMERGENCY_Detach(PhidgetHandle ch, void * ctx);
-//
 
 
 

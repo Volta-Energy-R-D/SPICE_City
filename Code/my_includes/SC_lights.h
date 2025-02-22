@@ -20,12 +20,15 @@
 *
 *******************************************/
 
+#define ATTACH_WAIT_TIME 500
+
 /******************************************
 *
 * FUNCTIONS
 *
 *******************************************/
 
+void CreateSCLights (void);
 
 
 #endif // SC_LIGHTS_HEADER_H (N.B.: last line of header file!)

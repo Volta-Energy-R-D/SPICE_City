@@ -17,8 +17,52 @@
 #include <phidget22.h>
 #include <stdio.h>
 
-//Declare any event handlers here. These will be called every time the associated event occurs.
 
+/*****************************************
+
+local defines
+
+******************************************/
+#define ATTACH_WAIT_TIME    500
+
+
+/*****************************************
+
+local variables
+
+******************************************/
+static PhidgetDigitalOutputHandle Lights_GS_0;
+static PhidgetDigitalOutputHandle Lights_GS_1;
+static PhidgetDigitalOutputHandle Lights_Subway_0;
+static PhidgetDigitalOutputHandle Lights_Subway_1;
+static PhidgetDigitalOutputHandle Lights_gW_1_0;
+static PhidgetDigitalOutputHandle Lights_gW_1_1;
+static PhidgetDigitalOutputHandle Lights_gW_2_0;
+static PhidgetDigitalOutputHandle Lights_gW_2_1;
+static PhidgetDigitalOutputHandle Lights_DT_A_0;
+static PhidgetDigitalOutputHandle Lights_DT_A_1;
+static PhidgetDigitalOutputHandle Lights_DT_B_0;
+static PhidgetDigitalOutputHandle Lights_DT_B_1;
+static PhidgetDigitalOutputHandle Lights_SOCRATES_A_0;
+static PhidgetDigitalOutputHandle Lights_SOCRATES_A_1;
+static PhidgetDigitalOutputHandle Lights_Union_0;
+static PhidgetDigitalOutputHandle Lights_Union_1;
+static PhidgetDigitalOutputHandle Lights_Res_A_0;
+static PhidgetDigitalOutputHandle Lights_Res_A_1;
+static PhidgetDigitalOutputHandle Lights_Res_B_0;
+static PhidgetDigitalOutputHandle Lights_Res_B_1;
+static PhidgetDigitalOutputHandle Lights_Industry_0;
+static PhidgetDigitalOutputHandle Lights_Industry_1;
+static PhidgetDigitalOutputHandle Lights_ComMed_0;
+static PhidgetDigitalOutputHandle Lights_ComMed_1;
+
+/*****************************************
+
+local functions
+
+******************************************/
+
+// handlers
 static void CCONV onLights_GS_0_Attach(PhidgetHandle ch, void * ctx) {
 	printf("Attach Lights_GS_0 !");
 }
@@ -211,32 +255,16 @@ static void CCONV onLights_ComMed_1_Detach(PhidgetHandle ch, void * ctx) {
 	printf("Detach Lights_ComMed_1 !");
 }
 
-int main() {
+
+/*****************************************
+
+external or "interface" functions
+
+******************************************/
+
+void CreateSCLights (void) 
+{
 	//Declare your Phidget channels and other variables
-	PhidgetDigitalOutputHandle Lights_GS_0;
-	PhidgetDigitalOutputHandle Lights_GS_1;
-	PhidgetDigitalOutputHandle Lights_Subway_0;
-	PhidgetDigitalOutputHandle Lights_Subway_1;
-	PhidgetDigitalOutputHandle Lights_gW_1_0;
-	PhidgetDigitalOutputHandle Lights_gW_1_1;
-	PhidgetDigitalOutputHandle Lights_gW_2_0;
-	PhidgetDigitalOutputHandle Lights_gW_2_1;
-	PhidgetDigitalOutputHandle Lights_DT_A_0;
-	PhidgetDigitalOutputHandle Lights_DT_A_1;
-	PhidgetDigitalOutputHandle Lights_DT_B_0;
-	PhidgetDigitalOutputHandle Lights_DT_B_1;
-	PhidgetDigitalOutputHandle Lights_SOCRATES_A_0;
-	PhidgetDigitalOutputHandle Lights_SOCRATES_A_1;
-	PhidgetDigitalOutputHandle Lights_Union_0;
-	PhidgetDigitalOutputHandle Lights_Union_1;
-	PhidgetDigitalOutputHandle Lights_Res_A_0;
-	PhidgetDigitalOutputHandle Lights_Res_A_1;
-	PhidgetDigitalOutputHandle Lights_Res_B_0;
-	PhidgetDigitalOutputHandle Lights_Res_B_1;
-	PhidgetDigitalOutputHandle Lights_Industry_0;
-	PhidgetDigitalOutputHandle Lights_Industry_1;
-	PhidgetDigitalOutputHandle Lights_ComMed_0;
-	PhidgetDigitalOutputHandle Lights_ComMed_1;
 
 	//Create your Phidget channels
 	PhidgetDigitalOutput_create(&Lights_GS_0);
@@ -341,30 +369,33 @@ int main() {
 	Phidget_setOnDetachHandler((PhidgetHandle)Lights_ComMed_1, onLights_ComMed_1_Detach, NULL);
 
 	//Open your Phidgets and wait for attachment
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_GS_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_GS_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Subway_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Subway_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_gW_1_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_gW_1_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_gW_2_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_gW_2_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_DT_A_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_DT_A_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_DT_B_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_DT_B_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_SOCRATES_A_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_SOCRATES_A_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Union_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Union_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Res_A_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Res_A_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Res_B_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Res_B_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Industry_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Industry_1, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_ComMed_0, 5000);
-	Phidget_openWaitForAttachment((PhidgetHandle)Lights_ComMed_1, 5000);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_GS_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_GS_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Subway_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Subway_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_gW_1_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_gW_1_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_gW_2_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_gW_2_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_DT_A_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_DT_A_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_DT_B_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_DT_B_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_SOCRATES_A_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_SOCRATES_A_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Union_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Union_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Res_A_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Res_A_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Res_B_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Res_B_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Industry_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_Industry_1, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_ComMed_0, ATTACH_WAIT_TIME);
+	Phidget_openWaitForAttachment((PhidgetHandle)Lights_ComMed_1, ATTACH_WAIT_TIME);
+
+    return;
+}
 
 	//Do stuff with your Phidgets here or in your event handlers.
 	PhidgetDigitalOutput_setDutyCycle(Lights_GS_0, 1);

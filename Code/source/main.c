@@ -51,7 +51,10 @@ int main(void)
     /* implement SPICE City Show (script follows)
     */
     while (1)
-	{ /*
+	{ 
+        
+        CreateSCLights(); // initialize controllable LEDs throughout SPICE City 
+        /*
         SC_Delay(15); // wait for Boss G to plug everything in, get his coffee, etc.
 
         // make sure everything is off--- disconnect power from generators, turn off all city 
