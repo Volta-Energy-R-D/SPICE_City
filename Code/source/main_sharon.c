@@ -1,0 +1,94 @@
+/*********************************************
+*
+* SPICE City (tm) MAIN PROGRAM
+*
+* authors:
+*           Sharon Fan
+*           Takis Zourntos
+*
+* Copyright (C) 2025 Volta Energy
+*
+**********************************************/
+
+// general includes
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+#include<pthread.h>
+
+// SPICE-City-specific includes
+#include<phidget22.h>
+#include "SC_infrastructure.h"
+#include "SC_railway.h"
+#include "SC_lights.h"
+#include "SC_powerstations.h"
+
+volatile int KeepRunning = 1; //flag to control infinite looping
+
+// Keyboard Intteruption
+void* monitor_keyboard(void* arg) {
+    printf("Press Enter to stop the railway system...\n");
+    getchar(); // Wait for user to press Enter
+    KeepRunning = 0; // Signal to stop the loop
+    return NULL;
+}
+
+int main(void)
+{
+	/* initialize workspace
+    */
+    railway_init();
+    railway_start();
+
+    // Create a seperate thread to listen for keyboard input for interruption
+    pthread_t keyboardThread;
+    pthread_create(&keyboardThread, NULL, monitor_keyboard,NULL);
+
+    /* implement SPICE City Show (script follows)
+    */
+    while (KeepRunning)
+	{ 
+        sleep(1); //Sleep to prevent CPU overuse
+
+        /*
+        SC_Delay(15); // wait for Boss G to plug everything in, get his coffee, etc.
+
+        // make sure everything is off--- disconnect power from generators, turn off all city 
+        // lights
+        SC_Shutdown();
+        SC_Delay(10); // delay for 10 seconds
+
+		// cue music, turn on ambient lighting
+        SC_Soundtrack_Start(); // Narrator: "Not long from now, hopefully, we'll all be living 
+                               // in sustainable garden cities... welcome to SPICE City, a place
+                               // showcasing a blend of renewable energy, hydrogen power, 
+                               // excellent transportation, etc."
+        SC_Light_Morning();
+        SC_Delay(30); // delay for 30 seconds
+        SC_Start(); // turn on the generators, begin transit service, get people working!
+        SC_Delay(60); // let things run for 60 seconds
+
+        SC_Light_Midday();
+        SC_Turn_On_HDLoad_A();
+        SC_Delay(10);
+        SC_Activate_gW_1(); // solar
+        SC_Turn_On_HDLoad_B();
+        SC_Delay(10);
+        SC_Activate_gW_2(); // wind
+
+        SC_Light_Evening();
+        SC_Deactivate_gW_1(); // solar konks out (no sun)
+        SC_Delay(2);
+        SC_Activate_HELIOS(); // stored hydrogen and fuel cells to the rescue!
+        SC_Delay(30); 
+      */
+	}
+
+    //Close the railway system
+    railway_close();
+
+    //Wait for keyboard thread to finish before exiting
+    pthread_join(keyboardThread,NULL);
+
+	return 0;
+}
