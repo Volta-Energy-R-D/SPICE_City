@@ -18,12 +18,88 @@
 #include<stdio.h>
 #include<phidget22.h>
 
+#define     EMERGENCY_Button_Sensor_PH              767874
+#define     EMERGENCY_Button_Sensor_port            3
+#define     EMERGENCY_Circuit_Breaker_PH            767874
+#define     EMERGENCY_Circuit_Breaker_PH_CB_chan    10    
+
+
+
+/***************************************
+
+    local variables
+
+****************************************/
+
+    PhidgetDigitalInputHandle EMERGENCY; // EMERGENCY STOP Button channel
+
+
+
+
+/***************************************
+
+    local functions
+
+
+****************************************/
+
+static CCONV void onEMERGENCY_StateChange (void)
+{
+
+}
+
+static CCONV void onEMERGENCY_Attach (void)
+{
+
+}
+
+
 /******************************************
-*
-* EMERGENCY button code
-*
-*
+
+ EMERGENCY button interface functions
+
+
 *******************************************/
+
+void CreateInfrastructure (void)
+{
+	//Create your Phidget channels
+	PhidgetDigitalInput_create(&EMERGENCY);
+
+	//Set addressing parameters to specify which channel to open (if any)
+	Phidget_setIsHubPortDevice((PhidgetHandle)EMERGENCY, EMERGENCY_PH);
+	Phidget_setHubPort((PhidgetHandle)EMERGENCY, EMERGENCY_PH_port);
+   */
+    /* install interrupt handlers...
+        - event handlers
+        - attach/detach handlers (checking for bad connections)
+    */
+    PhidgetDigitalInput_setOnStateChangeHandler(EMERGENCY, onEMERGENCY_StateChange, NULL);
+    Phidget_setOnAttachHandler((PhidgetHandle)EMERGENCY, onEMERGENCY_Attach, NULL);
+	Phidget_setOnDetachHandler((PhidgetHandle)EMERGENCY, onEMERGENCY_Detach, NULL);
+    /
+    
+    * Open your Phidgets and wait for attachment
+
+    */ 
+
+
+	/*Phidget_openWaitForAttachment((PhidgetHandle)EMERGENCY, 5000);
+    */
+}
+
+void ShutdownInfrasctructure (void)
+{
+    /* close your Phidgets once the program is done.
+    */
+	Phidget_close((PhidgetHandle) EMERGENCY);
+	PhidgetDigitalInput_delete(&EMERGENCY);
+    return;
+}
+
+
+
+
 void CCONV onEMERGENCY_StateChange(PhidgetDigitalInputHandle ch, void * ctx, int state) 
 {
 	// output any status change

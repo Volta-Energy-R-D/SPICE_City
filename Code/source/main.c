@@ -22,38 +22,24 @@
 #include "SC_lights.h"
 #include "SC_powerstations.h"
 
+# TIMING MACROS
+
+#define     TRAINSTOP           10 // <--- should be in railway.c
+#define     MORNING             200
+
+
 int main(void)
 {
 	/* initialize workspace
     */
-    PhidgetDigitalInputHandle EMERGENCY; // EMERGENCY STOP Button channel
-
-	//Create your Phidget channels
-	PhidgetDigitalInput_create(&EMERGENCY);
-
-	//Set addressing parameters to specify which channel to open (if any)
-	Phidget_setIsHubPortDevice((PhidgetHandle)EMERGENCY, EMERGENCY_PH);
-	Phidget_setHubPort((PhidgetHandle)EMERGENCY, EMERGENCY_PH_port);
-
-    /* install interrupt handlers...
-        - event handlers
-        - attach/detach handlers (checking for bad connections)
-    */
-    PhidgetDigitalInput_setOnStateChangeHandler(EMERGENCY, onEMERGENCY_StateChange, NULL);
-    Phidget_setOnAttachHandler((PhidgetHandle)EMERGENCY, onEMERGENCY_Attach, NULL);
-	Phidget_setOnDetachHandler((PhidgetHandle)EMERGENCY, onEMERGENCY_Detach, NULL);
-    /* Open your Phidgets and wait for attachment
-
-    */
-	Phidget_openWaitForAttachment((PhidgetHandle)EMERGENCY, 5000);
-    
-    
+    CreateSCLights(); // initialize controllable LEDs throughout SPICE City 
+    CreateRailways(); 
+    CreateInfrastructure(); // initialize EMERGENCY button, ambient lights, etc.
+ 
     /* implement SPICE City Show (script follows)
     */
-    while (1)
+     while (1)
 	{ 
-        
-        CreateSCLights(); // initialize controllable LEDs throughout SPICE City 
         /*
         SC_Delay(15); // wait for Boss G to plug everything in, get his coffee, etc.
 
@@ -68,7 +54,7 @@ int main(void)
                                // showcasing a blend of renewable energy, hydrogen power, 
                                // excellent transportation, etc."
         SC_Light_Morning();
-        SC_Delay(30); // delay for 30 seconds
+        SC_Delay(MORNING); // delay for 30 seconds
         SC_Start(); // turn on the generators, begin transit service, get people working!
         SC_Delay(60); // let things run for 60 seconds
 
@@ -88,13 +74,9 @@ int main(void)
       */
 	}
 
-
-
-    /* close your Phidgets once the program is done.
-    */
-	Phidget_close((PhidgetHandle)EMERGENCY);
-	PhidgetDigitalInput_delete(&EMERGENCY);
-
-
+    ShutdownSCLights();
+    ShutdownRailways()
+    ShutdownInfrastructure();
+ 
 	return 0;
 }
