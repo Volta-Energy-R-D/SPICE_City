@@ -56,7 +56,7 @@
 #define NB_Subway_TPS_PN 2
 
 #define TRAINSTOP 10              //seconds
-#define Attachment_TIMEOUT 5000   //seconds
+#define Attachment_TIMEOUT 500   //seconds
 #define IRSensor_Threshold 5      //cm
 #define IRSensor_CheckRate 500000 //microseconds
 #define IRSensor_DataInterval 30 //ms

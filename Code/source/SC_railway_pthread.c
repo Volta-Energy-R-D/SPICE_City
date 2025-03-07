@@ -34,7 +34,6 @@ const char* sensorNames[NUM_RAILWAYS] = {
 };
 
 int stateflag = 0;
-int checkno = 0;
 
 static void CCONV onAttach(PhidgetHandle ch, void * ctx) {
     int railwayIndex = *(int*)ctx;
@@ -46,32 +45,41 @@ static void CCONV onDetach(PhidgetHandle ch, void * ctx) {
 	printf("%s: Dettach!\n", sensorNames[railwayIndex]);
 }
 
+void* power_off_and_restore_power(void* arg){
+    int railwayIndex = *(int*)arg;
+
+    double sensorValue;
+    do{
+        usleep(IRSensor_CheckRate);
+        PhidgetVoltageRatioInput_getVoltageRatio(sensors[railwayIndex], &sensorValue);
+    } while (sensorValue < IRSensor_Threshold); 
+    
+    printf("Railway %s: Train cleared, stopping power.\n", railwayNames[railwayIndex]);
+    PhidgetDigitalOutput_setDutyCycle(digitalOutputs[railwayIndex], 0); // Power off the train
+    
+    sleep(TRAINSTOP);
+    PhidgetDigitalOutput_setDutyCycle(digitalOutputs[railwayIndex],1); // Power on the train
+    printf("Railway %s: Train power restored .\n", railwayNames[railwayIndex]);
+
+    free(arg);
+    return NULL;
+}
+
 static void CCONV onSensorChange(PhidgetVoltageRatioInputHandle ch, void * ctx, double sensorValue, Phidget_UnitInfo * sensorUnit) {
 	int railwayIndex = *(int*)ctx;
 
     if(sensorValue < IRSensor_Threshold){ 
         printf("Railway %s: Train Detected..Waiting for clearance...\n", railwayNames[railwayIndex]);
-        if (stateflag == 0 && checkno == 2){
-            stateflag = 1;
-            checkno = 0;
-        } else if (stateflag == 0 && checkno == 0){
-            checkno = checkno + 1;
-        } else if (stateflag == 0 && checkno == 1){
-            checkno = checkno + 1;
-        } else if (stateflag == 1){
-            stateflag = 0;
-            printf("Railway %s: Train, stopping power.\n", railwayNames[railwayIndex]);
-            PhidgetDigitalOutput_setDutyCycle(digitalOutputs[railwayIndex], 0); // Power off the train
-    
-            sleep(TRAINSTOP);
-            PhidgetDigitalOutput_setDutyCycle(digitalOutputs[railwayIndex],1); // Power on the train
-            printf("Railway %s: Train power restored .\n", railwayNames[railwayIndex]);
+        int* arg = malloc(sizeof(int));
+        *arg = railwayIndex;
+        pthread_t thread;
+        pthread_create(&thread, NULL, power_off_and_restore_power,arg);
+        pthread_detach(thread);
 
-        }
+    }
     // printf("SensorValue: %lf\n", sensorValue);
 	// printf("SensorUnit: %s\n", sensorUnit->symbol);
 	// printf("----------\n");
-    }
 }
 
 void railway_init(){
