@@ -37,11 +37,13 @@ int stateflag = 0;
 int checkno = 0;
 
 static void CCONV onAttach(PhidgetHandle ch, void * ctx) {
+
     int railwayIndex = *(int*)ctx;
 	printf("%s: Attach!\n", sensorNames[railwayIndex]);
 }
 
 static void CCONV onDetach(PhidgetHandle ch, void * ctx) {
+
 	int railwayIndex = *(int*)ctx;
 	printf("%s: Dettach!\n", sensorNames[railwayIndex]);
 }
