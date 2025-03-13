@@ -56,7 +56,7 @@ static void CCONV onVoltageChange(PhidgetVoltageInputHandle ch, void * ctx, doub
 
 
 void PowerStation_A_init(){
-    PhidgetEncoder_create(&voltageInput_A);
+    PhidgetVoltageInput_create(&voltageInput_A);
     PhidgetDCMotor_create(&dcMotor_A);
     PhidgetDigitalOutput_create(&digitalOutput_A);
     
@@ -73,7 +73,7 @@ void PowerStation_A_init(){
     //Motor Circuit Breaker
     Phidget_setDeviceSerialNumber((PhidgetHandle)digitalOutput_A, Cutoff_A_SN);
     Phidget_setHubPort((PhidgetHandle)digitalOutput_A, Cutoff_A_PN);
-    Phidget_setHubPort((PhidgetHandle)digitalOutput_A, Cutoff_A_CN);
+    Phidget_setChannel((PhidgetHandle)digitalOutput_A, Cutoff_A_CN);
 
     //Assign any event handlers needed before calling open so that no events are missed.
     Phidget_setOnAttachHandler((PhidgetHandle)digitalOutput_A, onAttach, NULL);
@@ -94,7 +94,7 @@ void PowerStation_A_start(){
 	Phidget_openWaitForAttachment((PhidgetHandle)voltageInput_A, Attachment_TIMEOUT);
 
 	PhidgetDCMotor_setTargetVelocity(dcMotor_A, Motor_A_Speed);
-	PhidgetDigitalOutput_setDutyCycle(voltageInput_A, 1);
+	PhidgetDigitalOutput_setDutyCycle(digitalOutput_A, 1);
 
 	printf("Power Generatin A started.\n");
 	
@@ -106,13 +106,13 @@ void PowerStation_A_close(){
 	Phidget_close((PhidgetHandle)voltageInput_A);
 
 	PhidgetDigitalOutput_delete(&digitalOutput_A);
-	PhidgetDigitalOutput_delete(&dcMotor_A);
-	PhidgetDigitalOutput_delete(&voltageInput_A);
+	PhidgetDCMotor_delete(&dcMotor_A);
+	PhidgetVoltageInput_delete(&voltageInput_A);
 	printf("Power Generatin A closed.\n");
 }
 
 void PowerStation_B_init(){
-	PhidgetEncoder_create(&voltageInput_B);
+	PhidgetVoltageInput_create(&voltageInput_B);
     PhidgetDCMotor_create(&dcMotor_B);
     PhidgetDigitalOutput_create(&digitalOutput_B);
     
@@ -151,7 +151,7 @@ void PowerStation_B_start(){
 
 	PhidgetDCMotor_setTargetVelocity(dcMotor_B, Motor_B_Speed);
 
-	PhidgetDigitalOutput_setDutyCycle(voltageInput_B, 1);
+	PhidgetDigitalOutput_setDutyCycle(digitalOutput_B, 1);
 
 	printf("Power Generatin B started.\n");
 }
@@ -162,8 +162,8 @@ void PowerStation_B_close(){
 	Phidget_close((PhidgetHandle)voltageInput_B);
 
 	PhidgetDigitalOutput_delete(&digitalOutput_B);
-	PhidgetDigitalOutput_delete(&dcMotor_B);
-	PhidgetDigitalOutput_delete(&voltageInput_B);
+	PhidgetDCMotor_delete(&dcMotor_B);
+	PhidgetVoltageInput_delete(&voltageInput_B);
 	printf("Power Generatin B closed.\n");
 }
 
