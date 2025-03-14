@@ -71,6 +71,14 @@ void PowerStation_B_init();
 // Start the power station
 void PowerStation_A_start();
 void PowerStation_B_start();
+// Power on the circuit
+void PowerStation_A_PowerOn();
+void PowerStation_B_PowerOn();
+
+
+// Power off the circuit
+void PowerStation_A_PowerOff();
+void PowerStation_B_PowerOff();
 
 // End the power station
 void PowerStation_A_close();
