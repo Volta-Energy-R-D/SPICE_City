@@ -74,9 +74,9 @@ static void CCONV onDetach(PhidgetHandle ch, void * ctx) {
     Phidget_setHubPort((PhidgetHandle)Load5V_1, 0);
     Phidget_setDeviceSerialNumber((PhidgetHandle)Load5V_1, 767874);
     Phidget_setChannel((PhidgetHandle)Load5V_1, 8);
-    Phidget_setHubPort((PhidgetHandle)digitalOutput9, 0);
-    Phidget_setDeviceSerialNumber((PhidgetHandle)digitalOutput9, 767874);
-    Phidget_setChannel((PhidgetHandle)digitalOutput9, 9);
+    Phidget_setHubPort((PhidgetHandle)Load5V_2, 0);
+    Phidget_setDeviceSerialNumber((PhidgetHandle)Load5V_2, 767874);
+    Phidget_setChannel((PhidgetHandle)Load5V_2, 9);
 
     //Assign any event handlers you need before calling open so that no events are missed.
     Phidget_setOnAttachHandler((PhidgetHandle)gW_1, onAttach, NULL);
@@ -100,9 +100,7 @@ static void CCONV onDetach(PhidgetHandle ch, void * ctx) {
     PhidgetDigitalOutput_setDutyCycle(Load5V_1, 1);
     PhidgetDigitalOutput_setDutyCycle(Load5V_2, 1);
 
-    //Wait until Enter has been pressed before exiting
-    getchar();
-
+    
     //Close your Phidgets once the program is done.
     Phidget_close((PhidgetHandle)gW_1);
     Phidget_close((PhidgetHandle)gW_2);
