@@ -78,6 +78,10 @@ void railway_init();
 void railway_start();
 // Closes the railway system
 void railway_close();
+// Power off Railway
+void railway_system_power_off();
+// Power on Railway
+void railway_system_power_on();
 
 
 #endif // SC_RAILWAY_HEADER_H (N.B.: last line of header file!)

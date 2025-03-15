@@ -48,6 +48,22 @@ static void CCONV onDetach(PhidgetHandle ch, void * ctx) {
 	printf("%s: Dettach!\n", sensorNames[railwayIndex]);
 }
 
+void railway_system_power_off() {
+    printf("Powering off the entire railway system...\n");
+    for (int i = 0; i < NUM_RAILWAYS; i++) {
+        PhidgetDigitalOutput_setDutyCycle(digitalOutputs[i], 0);  // Power off all trains
+        printf("Railway %s: Train power off.\n", railwayNames[i]);
+    }
+}
+
+void railway_system_power_on() {
+    printf("Restoring power to the entire railway system...\n");
+    for (int i = 0; i < NUM_RAILWAYS; i++) {
+        PhidgetDigitalOutput_setDutyCycle(digitalOutputs[i], 1);  // Power on all trains
+        printf("Railway %s: Train power restored.\n", railwayNames[i]);
+    }
+}
+
 static void CCONV onSensorChange(PhidgetVoltageRatioInputHandle ch, void * ctx, double sensorValue, Phidget_UnitInfo * sensorUnit) {
 	int railwayIndex = *(int*)ctx;
 

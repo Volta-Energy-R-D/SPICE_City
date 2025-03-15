@@ -21,7 +21,6 @@
 #include "SC_powerstations.h"
 
 volatile int KeepRunning = 1; //flag to control infinite looping
-volatile int count = 0;
 
 // Keyboard Intteruption
 void* monitor_keyboard(void* arg) {
