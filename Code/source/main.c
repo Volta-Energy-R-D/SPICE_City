@@ -20,7 +20,7 @@
 // SPICE-City-specific includes
 #include<phidget22.h>
 
-// delete soon, no lo   nger needed: #include "SC_infrastructure.h"
+// delete soon, no longer needed: #include "SC_infrastructure.h"
 #include "SC_railway.h"
 #include "SC_lights.h"
 #include "SC_powerstations.h"
@@ -75,7 +75,10 @@ int main(void)
         SC_Deactivate_gW_1(); // solar konks out (no sun)
         SC_Delay(2);
         SC_Activate_HELIOS(); // stored hydrogen and fuel cells to the rescue!
-        SC_Delay(30); 
+        SC_Delay(30);
+         
+         SC_Light_Night();
+         
       */
 	}
     // additional comment
