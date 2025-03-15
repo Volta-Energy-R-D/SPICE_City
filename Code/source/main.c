@@ -15,10 +15,12 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<string.h>
-
+#include<unistd.h>
+4
 // SPICE-City-specific includes
 #include<phidget22.h>
-// delete soon, no longer needed: #include "SC_infrastructure.h"
+
+// delete soon, no lo   nger needed: #include "SC_infrastructure.h"
 #include "SC_railway.h"
 #include "SC_lights.h"
 #include "SC_powerstations.h"
@@ -76,7 +78,7 @@ int main(void)
         SC_Delay(30); 
       */
 	}
-
+    // additional comment
     //ShutdownSCLights();
     //ShutdownRailways();
     //ShutdownInfrastructure();
