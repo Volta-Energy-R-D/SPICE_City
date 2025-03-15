@@ -23,7 +23,7 @@ proj_SC : $(objects)
 	gcc -o proj_SC $(objects) -lphidget22
 
 # compile main.c to produce main.o, if needed
-main.o : main.c SC_railway.h SC_lights.h SC_powerstations.h SC_gridWISe.h
+main.o : main.c SC_railway.h SC_lights.h SC_powerstations.h SC_gridWISE.h
 # compile various source files for SPICE City
 SC_railway.o: SC_railway.c SC_railway.h
 SC_lights.o: SC_lights.c SC_lights.h
