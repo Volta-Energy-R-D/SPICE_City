@@ -16,7 +16,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<unistd.h>
-4
+
 // SPICE-City-specific includes
 #include<phidget22.h>
 
