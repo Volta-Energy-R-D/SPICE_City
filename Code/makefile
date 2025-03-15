@@ -7,7 +7,7 @@
 #
 
 # define a variable to contain all of our object files (if this list changes, we only need to change the variable)
-objects = main.o SC_infrastructure.o SC_railway.o SC_lights.o SC_powerstations.o 
+objects = main.o SC_railway.o SC_lights.o SC_powerstations.o SC_gridWISE.o
 
 # define a variable for our include directory
 include = my_includes
@@ -23,13 +23,12 @@ proj_SC : $(objects)
 	gcc -o proj_SC $(objects) -lphidget22
 
 # compile main.c to produce main.o, if needed
-main.o : main.c SC_infrastructure.h SC_railway.h SC_lights.h SC_powerstations.h 
+main.o : main.c SC_railway.h SC_lights.h SC_powerstations.h SC_gridWISe.h
 # compile various source files for SPICE City
-SC_infrastructure.o: SC_infrastructure.c SC_infrastructure.h  
 SC_railway.o: SC_railway.c SC_railway.h
 SC_lights.o: SC_lights.c SC_lights.h
 SC_powerstations.o: SC_powerstations.c SC_powerstations.h 
-
+SC_gridWISE.o: SC_gridWISE.c SC_gridWISE.o
 
 # a clean option that will remove proj_ds and any object files, with EXTRA features now!
 .PHONY : clean # declaring clean as "phony" prevents it from being ignored if a file named "clean" happens to exist in the directory!

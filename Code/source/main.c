@@ -4,6 +4,7 @@
 *
 * authors:
 *           Sharon Fan
+*           Sid Swaminathan
 *           Takis Zourntos
 *
 * Copyright (C) 2025 Volta Energy
@@ -17,12 +18,14 @@
 
 // SPICE-City-specific includes
 #include<phidget22.h>
-#include "SC_infrastructure.h"
+// delete soon, no longer needed: #include "SC_infrastructure.h"
 #include "SC_railway.h"
 #include "SC_lights.h"
 #include "SC_powerstations.h"
+// until Sid commits his code #include "SC_ambient.h"
+#include "SC_gridWISE.h"
 
-# TIMING MACROS
+// TIMING MACROS
 
 #define     TRAINSTOP           10 // <--- should be in railway.c
 #define     MORNING             200
@@ -32,9 +35,9 @@ int main(void)
 {
 	/* initialize workspace
     */
-    CreateSCLights(); // initialize controllable LEDs throughout SPICE City 
-    CreateRailways(); 
-    CreateInfrastructure(); // initialize EMERGENCY button, ambient lights, etc.
+    //CreateSCLights(); // initialize controllable LEDs throughout SPICE City
+    //CreateRailways();
+    //CreateInfrastructure(); // initialize EMERGENCY button, ambient lights, etc.
  
     /* implement SPICE City Show (script follows)
     */
@@ -74,9 +77,9 @@ int main(void)
       */
 	}
 
-    ShutdownSCLights();
-    ShutdownRailways()
-    ShutdownInfrastructure();
+    //ShutdownSCLights();
+    //ShutdownRailways();
+    //ShutdownInfrastructure();
  
 	return 0;
 }
