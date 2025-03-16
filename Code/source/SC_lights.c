@@ -43,15 +43,15 @@ local defines
 #define Lights_gW_1_1_PH                    657281
 #define Lights_gW_1_1_PH_LED_chan           5
 #define Lights_gW_2_0_PH                    657281
-#define Lights_gW_2_0_PH_LED_chan           6
+#define Lights_gW_2_0_PH_LED_chan           58
 #define Lights_gW_2_1_PH                    657281
-#define Lights_gW_2_1_PH_LED_chan           7
+#define Lights_gW_2_1_PH_LED_chan           59
 
 // downtown arrondissment A
 #define Lights_DT_A_0_PH                    657281
-#define Lights_DT_A_0_PH_LED_chan           8
+#define Lights_DT_A_0_PH_LED_chan           52
 #define Lights_DT_A_1_PH                    657281
-#define Lights_DT_A_1_PH_LED_chan           9
+#define Lights_DT_A_1_PH_LED_chan           53
 
 // downtown arrondissment B
 #define Lights_DT_B_0_PH                    657281
@@ -73,25 +73,25 @@ local defines
 
 // residential areas A & B
 #define Lights_Res_A_0_PH                   657281
-#define Lights_Res_A_0_PH_LED_chan          16
+#define Lights_Res_A_0_PH_LED_chan          62
 #define Lights_Res_A_1_PH                   657281
-#define Lights_Res_A_1_PH_LED_chan          17
+#define Lights_Res_A_1_PH_LED_chan          63
 #define Lights_Res_B_0_PH                   657281
-#define Lights_Res_B_0_PH_LED_chan          18
+#define Lights_Res_B_0_PH_LED_chan          50
 #define Lights_Res_B_1_PH                   657281
-#define Lights_Res_B_1_PH_LED_chan          19
+#define Lights_Res_B_1_PH_LED_chan          51
 
 // industrial facility
 #define Lights_Industry_0_PH                657281
-#define Lights_Industry_0_PH_LED_chan       20
+#define Lights_Industry_0_PH_LED_chan       48
 #define Lights_Industry_1_PH                657281
-#define Lights_Industry_1_PH_LED_chan       21
+#define Lights_Industry_1_PH_LED_chan       49
 
 // commercial medical area
 #define Lights_ComMed_0_PH                  657281
-#define Lights_ComMed_0_PH_LED_chan         22
+#define Lights_ComMed_0_PH_LED_chan         60
 #define Lights_ComMed_1_PH                  657281
-#define Lights_ComMed_1_PH_LED_chan         23
+#define Lights_ComMed_1_PH_LED_chan         61
 
 
 
