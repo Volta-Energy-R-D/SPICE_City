@@ -4,6 +4,7 @@
 *
 * authors:
 *           Sharon Fan
+*           Sid Swaminathan
 *           Takis Zourntos
 *
 * Copyright (C) 2025 Volta Energy
@@ -25,8 +26,8 @@
 #include "SC_lights.h"
 #include "SC_powerstations.h"
 
-#define RUN_TIME 900  // 15 minutes in seconds
-#define BREAK_TIME 300  // 5 minutes in seconds
+#define RUN_TIME        900  // 15 minutes in seconds
+#define BREAK_TIME      300  // 5 minutes in seconds
 
 volatile int KeepRunning = 1; //flag to control infinite looping
 
